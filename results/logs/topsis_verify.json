@@ -1,0 +1,74 @@
+[
+  {
+    "api_id": "ai_weather_by_meteosource_find_places",
+    "C": 0.9791022946635595,
+    "D_plus": 0.008560980280305382,
+    "D_minus": 0.4011002788138752
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_historical_weather",
+    "C": 0.9762429938295839,
+    "D_plus": 0.009720019027926095,
+    "D_minus": 0.3994232441510065
+  },
+  {
+    "api_id": "accuweather_get24hoursconditionsbylocationkey",
+    "C": 0.9561230595822147,
+    "D_plus": 0.01845964518461022,
+    "D_minus": 0.40225440207670976
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_hourly",
+    "C": 0.8445827177464607,
+    "D_plus": 0.07176912642312538,
+    "D_minus": 0.3900143083563165
+  },
+  {
+    "api_id": "ambee_weather_data_by_coordinates",
+    "C": 0.7927719795273794,
+    "D_plus": 0.088535934829629,
+    "D_minus": 0.3387032706972441
+  },
+  {
+    "api_id": "climate_data_search_location_by_name_or_zip_code",
+    "C": 0.754021372334792,
+    "D_plus": 0.11069683711926673,
+    "D_minus": 0.33932940365613873
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_current",
+    "C": 0.7066544562922092,
+    "D_plus": 0.13390652840273615,
+    "D_minus": 0.3225739986582918
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_nearest_place",
+    "C": 0.7033194077477839,
+    "D_plus": 0.1383309301550862,
+    "D_minus": 0.327931217648257
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_daily",
+    "C": 0.6972406535624392,
+    "D_plus": 0.1445997468309528,
+    "D_minus": 0.3330064725389725
+  },
+  {
+    "api_id": "apjoy_weather_forecast_getweatherforecast",
+    "C": 0.6455053961109366,
+    "D_plus": 0.16180941865631498,
+    "D_minus": 0.2946415875963842
+  },
+  {
+    "api_id": "climate_data_get_climate_data_by_lat_lon_or_key",
+    "C": 0.6005779115160154,
+    "D_plus": 0.17946277903515448,
+    "D_minus": 0.2698433164697522
+  },
+  {
+    "api_id": "accuweather_getdailyforecastbylocationkey",
+    "C": 0.022844956827913585,
+    "D_plus": 0.40897308129751003,
+    "D_minus": 0.009561402206645545
+  }
+]
