@@ -40,3 +40,7 @@ build/
 # OS-specific metadata
 Icon?
 Thumbs.db
+data/raw/toolbench/data/toolenv/tools/Finance/prague_stock_exchange.json
+data/raw/toolbench/data/toolenv/tools/Medical/the_cancer_imaging_archive.json
+data/raw/toolbench/data/toolenv/tools/Sports/allsportsapi.json
+data/raw/toolbench/data/toolenv/tools/Sports/transfermarkt_db.json
