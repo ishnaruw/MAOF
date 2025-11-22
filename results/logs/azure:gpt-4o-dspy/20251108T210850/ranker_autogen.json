@@ -1,0 +1,74 @@
+[
+  {
+    "api_id": "meteostat_hourly_station_data",
+    "C": 0.9999,
+    "D_plus": 0.0001,
+    "D_minus": 0.9999
+  },
+  {
+    "api_id": "ambee_water_vapor_data_water_vapour_history_by_lat_lng",
+    "C": 0.9998,
+    "D_plus": 0.0002,
+    "D_minus": 0.9998
+  },
+  {
+    "api_id": "easy_weather_hourly_forecast_240_hours",
+    "C": 0.9997,
+    "D_plus": 0.0003,
+    "D_minus": 0.9997
+  },
+  {
+    "api_id": "weather_api_by_any_city_get_weather_updates",
+    "C": 0.9996,
+    "D_plus": 0.0004,
+    "D_minus": 0.9996
+  },
+  {
+    "api_id": "weather_forecast_14_days_getforecastdata",
+    "C": 0.9995,
+    "D_plus": 0.0005,
+    "D_minus": 0.9995
+  },
+  {
+    "api_id": "rapidweather_coordinates_by_location_name",
+    "C": 0.9994,
+    "D_plus": 0.0006,
+    "D_minus": 0.9994
+  },
+  {
+    "api_id": "history_hourlyweatherzip",
+    "C": 0.9993,
+    "D_plus": 0.0007,
+    "D_minus": 0.9993
+  },
+  {
+    "api_id": "national_weather_service_stations_stationid_observations_recordid",
+    "C": 0.9992,
+    "D_plus": 0.0008,
+    "D_minus": 0.9992
+  },
+  {
+    "api_id": "weather_forecast_14_days_get_forecastdata_by_lat_lon",
+    "C": 0.9991,
+    "D_plus": 0.0009,
+    "D_minus": 0.9991
+  },
+  {
+    "api_id": "easy_weather_historical_daily",
+    "C": 0.999,
+    "D_plus": 0.001,
+    "D_minus": 0.999
+  },
+  {
+    "api_id": "accuweather_get24hoursconditionsbylocationkey",
+    "C": 0.9989,
+    "D_plus": 0.0011,
+    "D_minus": 0.9989
+  },
+  {
+    "api_id": "weather_forecast_14_days_search_location_by_name_or_zip_code",
+    "C": 0.0001,
+    "D_plus": 0.9999,
+    "D_minus": 0.0001
+  }
+]

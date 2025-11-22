@@ -1,0 +1,74 @@
+[
+  {
+    "api_id": "meteostat_hourly_station_data",
+    "C": 0.9999259026383288,
+    "D_plus": 4.169374508764846e-05,
+    "D_minus": 0.5626469654368581
+  },
+  {
+    "api_id": "ambee_water_vapor_data_water_vapour_history_by_lat_lng",
+    "C": 0.7344407503311488,
+    "D_plus": 0.17272125323165544,
+    "D_minus": 0.4776844601714232
+  },
+  {
+    "api_id": "weather_api_by_any_city_get_weather_updates",
+    "C": 0.6542938051423464,
+    "D_plus": 0.2573342159614233,
+    "D_minus": 0.48703837495318847
+  },
+  {
+    "api_id": "weather_forecast_14_days_getforecastdata",
+    "C": 0.6530446674781016,
+    "D_plus": 0.25992198907056974,
+    "D_minus": 0.4892291687493336
+  },
+  {
+    "api_id": "rapidweather_coordinates_by_location_name",
+    "C": 0.6529773888425886,
+    "D_plus": 0.2599868587785445,
+    "D_minus": 0.489205990388892
+  },
+  {
+    "api_id": "history_hourlyweatherzip",
+    "C": 0.6478308832155629,
+    "D_plus": 0.2661196852681221,
+    "D_minus": 0.48953909508715276
+  },
+  {
+    "api_id": "weather_forecast_14_days_get_forecastdata_by_lat_lon",
+    "C": 0.6360598417470786,
+    "D_plus": 0.2741652368546179,
+    "D_minus": 0.4791598102375634
+  },
+  {
+    "api_id": "national_weather_service_stations_stationid_observations_recordid",
+    "C": 0.6336993144002041,
+    "D_plus": 0.27427508070304685,
+    "D_minus": 0.4744952369225877
+  },
+  {
+    "api_id": "easy_weather_historical_daily",
+    "C": 0.6313306012276889,
+    "D_plus": 0.27649045601714783,
+    "D_minus": 0.4734780982970315
+  },
+  {
+    "api_id": "easy_weather_hourly_forecast_240_hours",
+    "C": 0.6240535722314182,
+    "D_plus": 0.2743070803832831,
+    "D_minus": 0.45533698622329216
+  },
+  {
+    "api_id": "accuweather_get24hoursconditionsbylocationkey",
+    "C": 0.6196890478424671,
+    "D_plus": 0.2787052018145482,
+    "D_minus": 0.4541298644212055
+  },
+  {
+    "api_id": "weather_forecast_14_days_search_location_by_name_or_zip_code",
+    "C": 0.003668138741969408,
+    "D_plus": 0.5626768731135036,
+    "D_minus": 0.002071575664429462
+  }
+]

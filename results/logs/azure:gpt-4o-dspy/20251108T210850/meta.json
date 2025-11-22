@@ -1,0 +1,8 @@
+{
+  "model_tag": "azure:gpt-4o-dspy",
+  "provider": "azure",
+  "model": "gpt-4o-dspy",
+  "category": "Weather",
+  "with_qos": true,
+  "user_goal": "Get a 5 day forecast by city and yesterday weather"
+}

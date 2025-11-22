@@ -1,0 +1,68 @@
+[
+  {
+    "api_id": "meteostat_hourly_station_data",
+    "C": 0.9309,
+    "D_plus": 0.0359,
+    "D_minus": 0.5071
+  },
+  {
+    "api_id": "weather_forecast_14_days_getforecastdata",
+    "C": 0.7811,
+    "D_plus": 0.102,
+    "D_minus": 0.369
+  },
+  {
+    "api_id": "rapidweather_coordinates_by_location_name",
+    "C": 0.7799,
+    "D_plus": 0.1026,
+    "D_minus": 0.3674
+  },
+  {
+    "api_id": "history_hourlyweatherzip",
+    "C": 0.7201,
+    "D_plus": 0.132,
+    "D_minus": 0.348
+  },
+  {
+    "api_id": "easy_weather_hourly_forecast_240_hours",
+    "C": 0.6301,
+    "D_plus": 0.1736,
+    "D_minus": 0.2964
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_find_places_prefix",
+    "C": 0.4205,
+    "D_plus": 0.3006,
+    "D_minus": 0.2194
+  },
+  {
+    "api_id": "easy_weather_historical_daily",
+    "C": 0.3976,
+    "D_plus": 0.3165,
+    "D_minus": 0.2035
+  },
+  {
+    "api_id": "weather_forecast_14_days_get_forecastdata_by_lat_lon",
+    "C": 0.3876,
+    "D_plus": 0.322,
+    "D_minus": 0.198
+  },
+  {
+    "api_id": "accuweather_get24hoursconditionsbylocationkey",
+    "C": 0.3333,
+    "D_plus": 0.3536,
+    "D_minus": 0.1764
+  },
+  {
+    "api_id": "weather_forecast_14_days_search_location_by_name_or_zip_code",
+    "C": 0.0003,
+    "D_plus": 0.9999,
+    "D_minus": 0.0001
+  },
+  {
+    "api_id": "climate_data_search_location_by_name_or_zip_code",
+    "C": 0.0,
+    "D_plus": 1.0,
+    "D_minus": 0.0
+  }
+]

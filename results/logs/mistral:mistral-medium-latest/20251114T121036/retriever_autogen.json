@@ -1,0 +1,50 @@
+[
+  {
+    "api_id": "accuweather_get24hoursconditionsbylocationkey",
+    "reason": "Provides historical weather (past 24 hours) by location key, covering yesterday's data."
+  },
+  {
+    "api_id": "meteostat_hourly_station_data",
+    "reason": "Offers historical hourly weather observations for a station, useful for yesterday's weather."
+  },
+  {
+    "api_id": "history_hourlyweatherzip",
+    "reason": "Returns historical hourly weather for a given day/location (zip-based), including yesterday."
+  },
+  {
+    "api_id": "easy_weather_historical_daily",
+    "reason": "Provides historical daily weather data by latitude/longitude and date, including yesterday."
+  },
+  {
+    "api_id": "weather_forecast_14_days_getforecastdata",
+    "reason": "Delivers a 14-day forecast by location key, which includes 5-day forecasts."
+  },
+  {
+    "api_id": "weather_forecast_14_days_get_forecastdata_by_lat_lon",
+    "reason": "Offers a 14-day forecast by lat/lon, covering 5-day forecasts."
+  },
+  {
+    "api_id": "weather_forecast_14_days_search_location_by_name_or_zip_code",
+    "reason": "Searches locations by name/zip to enable forecast retrieval (e.g., for 5-day forecasts)."
+  },
+  {
+    "api_id": "weatherapi_com_get_weather_updates",
+    "reason": "General weather API that may include forecast and historical data by city name."
+  },
+  {
+    "api_id": "easy_weather_hourly_forecast_240_hours",
+    "reason": "Provides a 240-hour (10-day) forecast, which includes 5-day forecasts by lat/lon."
+  },
+  {
+    "api_id": "climate_data_search_location_by_name_or_zip_code",
+    "reason": "Searches locations by name/zip to retrieve forecast keys (e.g., for 5-day forecasts)."
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_find_places_prefix",
+    "reason": "Searches cities by name prefix to get location IDs for forecast/historical data retrieval."
+  },
+  {
+    "api_id": "rapidweather_coordinates_by_location_name",
+    "reason": "Converts city names to coordinates for use in forecast/historical APIs."
+  }
+]

@@ -2,49 +2,16 @@
 
 import os
 import json
+import time
 from pathlib import Path
-from openai import AzureOpenAI
 
+from src.llm.backends import make_backend
 from src.tools.fetch_services import fetch_services
 from src.agents.retriever import collect_candidates
 from src.agents.ranker_topsis import make_qos_table, ranker_call
 from src.agents.planner import planner_call
 from src.core.topsis_verify import topsis_verify
 
-# -------- Azure config --------
-def _require_env(k: str) -> str:
-    v = os.getenv(k)
-    if not v:
-        raise RuntimeError(f"{k} is not set. export it or put it in a .env")
-    return v
-
-AZURE_OPENAI_API_KEY = _require_env("AZURE_OPENAI_API_KEY")
-AZURE_OPENAI_ENDPOINT = _require_env("AZURE_OPENAI_ENDPOINT")  # e.g. https://autoai-openai.openai.azure.com/
-AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION", "2024-05-01-preview")
-AZURE_OPENAI_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-dspy")  # your deployment name
-
-_client = AzureOpenAI(
-    api_key=AZURE_OPENAI_API_KEY,
-    api_version=AZURE_OPENAI_API_VERSION,
-    azure_endpoint=AZURE_OPENAI_ENDPOINT,
-)
-
-def _chat(system_message: str, user_prompt: str, force_json: bool = True) -> str:
-    """
-    Call Azure OpenAI. If force_json=True, request a strict JSON object response.
-    """
-    kwargs = dict(
-        model=AZURE_OPENAI_DEPLOYMENT,  # deployment name
-        temperature=0,
-        messages=[
-            {"role": "system", "content": system_message},
-            {"role": "user", "content": user_prompt},
-        ],
-    )
-    if force_json:
-        kwargs["response_format"] = {"type": "json_object"}
-    r = _client.chat.completions.create(**kwargs)
-    return r.choices[0].message.content or ""
 
 # -------- role prompts --------
 RETRIEVER_SYS = (
@@ -60,11 +27,21 @@ PLANNER_SYS = (
     "Follow the prompt strictly and return valid JSON."
 )
 
-# -------- pipeline --------
+
+def _run_dir(model_tag: str) -> Path:
+    run_id = time.strftime("%Y%m%dT%H%M%S")
+    d = Path(f"results/logs/{model_tag}/{run_id}")
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
 def run_autogen_once(user_goal: str, category: str, with_qos: bool):
+    backend = make_backend()  # Azure or Mistral, chosen by LLM_PROVIDER
+    model_tag = backend.name()
+
     # 1) RETRIEVER
     picks = collect_candidates(
-        llm_call=lambda p: _chat(RETRIEVER_SYS, p, force_json=True),
+        llm_call=lambda p: backend.chat_json(RETRIEVER_SYS, p, temperature=0, force_json=True),
         user_goal=user_goal,
         fetch_fn=fetch_services,
         category=category,
@@ -92,38 +69,42 @@ def run_autogen_once(user_goal: str, category: str, with_qos: bool):
 
     # 3) RANKER (LLM TOPSIS) + OPTIONAL VERIFIER
     ranked = ranker_call(
-        llm_call=lambda p: _chat(RANKER_SYS, p, force_json=True),
+        llm_call=lambda p: backend.chat_json(RANKER_SYS, p, temperature=0, force_json=True),
         qos_rows=qos_rows,
     )
     verified = topsis_verify(qos_rows)
 
-    # 4) PLANNER — define ranked_top before calling planner
-    if ranked:
-        ranked_top = ranked[:6]
-    else:
-        # Fallback: if ranker returned nothing, take first few catalog items with C=0.0
-        ranked_top = [{"api_id": s["api_id"], "C": 0.0} for s in cat_items[:6]]
-
+    # 4) PLANNER
+    ranked_top = ranked[:6] if ranked else [{"api_id": s["api_id"], "C": 0.0} for s in cat_items[:6]]
     plan = planner_call(
-        llm_call=lambda p: _chat(PLANNER_SYS, p, force_json=True),
+        llm_call=lambda p: backend.chat_json(PLANNER_SYS, p, temperature=0, force_json=True),
         user_goal=user_goal,
         ranked_top=ranked_top,
     )
 
     # 5) LOGS
-    out = Path("results/logs")
-    out.mkdir(parents=True, exist_ok=True)
+    out = _run_dir(model_tag)
     (out / "retriever_autogen.json").write_text(json.dumps(picks, indent=2))
     (out / "ranker_autogen.json").write_text(json.dumps(ranked, indent=2))
     (out / "planner_autogen.json").write_text(json.dumps(plan, indent=2))
     (out / "topsis_verify.json").write_text(json.dumps(verified, indent=2))
+    (out / "meta.json").write_text(json.dumps({
+        "model_tag": model_tag,
+        "provider": model_tag.split(":")[0],
+        "model": model_tag.split(":")[1] if ":" in model_tag else model_tag,
+        "category": category,
+        "with_qos": with_qos,
+        "user_goal": user_goal,
+    }, indent=2))
 
-    print("Saved to results/logs/")
+    print(f"Saved to {out}")
     return ranked, plan
 
+
 if __name__ == "__main__":
+    # Example single run
     run_autogen_once(
-        "Get a 5 day forecast by city and yesterday weather",
+        user_goal="Get a 5 day forecast by city and yesterday weather",
         category="Weather",
         with_qos=True,
     )

@@ -3,8 +3,9 @@ from pathlib import Path
 import json
 
 # point to your API catalogs
-CATALOG_WITH_QOS = Path("data/processed/api_repo.with_qos.jsonl")
-CATALOG_NO_QOS = Path("data/processed/api_repo.no_qos.jsonl")
+
+CATALOG_WITH_QOS = Path("data/processed/api_catalog_sample_balanced/api_repo.with_qos.jsonl")
+CATALOG_NO_QOS = Path("data/processed/api_catalog_sample_balanced/api_repo.no_qos.jsonl")
 
 
 def iter_jsonl(path: Path):

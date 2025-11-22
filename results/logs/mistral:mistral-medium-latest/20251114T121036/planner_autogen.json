@@ -1,0 +1,27 @@
+{
+  "plan": [
+    {
+      "step": 1,
+      "api_id": "rapidweather_coordinates_by_location_name",
+      "action": "Query coordinates (latitude/longitude) for the input city name.",
+      "why": "Required to fetch location-specific weather data (forecast and historical) since most weather APIs need coordinates rather than raw city names."
+    },
+    {
+      "step": 2,
+      "api_id": "weather_forecast_14_days_getforecastdata",
+      "action": "Fetch the 5-day forecast using the coordinates from Step 1.",
+      "why": "Highest-ranked forecast API that covers the 5-day requirement explicitly (14-day includes 5-day)."
+    },
+    {
+      "step": 3,
+      "api_id": "meteostat_hourly_station_data",
+      "action": "Retrieve yesterday\u2019s hourly weather data for the same coordinates.",
+      "why": "Highest-ranked API for historical weather, and hourly granularity ensures precision for 'yesterday'."
+    }
+  ],
+  "selected_api_ids": [
+    "rapidweather_coordinates_by_location_name",
+    "weather_forecast_14_days_getforecastdata",
+    "meteostat_hourly_station_data"
+  ]
+}

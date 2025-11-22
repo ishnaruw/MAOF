@@ -1,0 +1,8 @@
+{
+  "model_tag": "mistral:mistral-medium-latest",
+  "provider": "mistral",
+  "model": "mistral-medium-latest",
+  "category": "Weather",
+  "with_qos": true,
+  "user_goal": "Get a 5 day forecast by city and yesterday weather"
+}

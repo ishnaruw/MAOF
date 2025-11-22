@@ -1,0 +1,50 @@
+[
+  {
+    "api_id": "weather_forecast_14_days_getforecastdata",
+    "reason": "Provides a 14-day forecast including 5-day data for a location."
+  },
+  {
+    "api_id": "weather_forecast_14_days_get_forecastdata_by_lat_lon",
+    "reason": "Offers a 14-day forecast including 5-day data by latitude and longitude."
+  },
+  {
+    "api_id": "weather_api_by_any_city_get_weather_updates",
+    "reason": "Provides necessary weather information for a city, including forecasts."
+  },
+  {
+    "api_id": "easy_weather_historical_daily",
+    "reason": "Returns historical daily weather data for a specific date and location."
+  },
+  {
+    "api_id": "history_hourlyweatherzip",
+    "reason": "Provides historical hourly weather data for a specific day and location."
+  },
+  {
+    "api_id": "accuweather_get24hoursconditionsbylocationkey",
+    "reason": "Offers historical weather conditions for the past 24 hours by location key."
+  },
+  {
+    "api_id": "meteostat_hourly_station_data",
+    "reason": "Provides historical hourly weather observations for a specific station."
+  },
+  {
+    "api_id": "rapidweather_coordinates_by_location_name",
+    "reason": "Helps retrieve coordinates by location name for weather data queries."
+  },
+  {
+    "api_id": "weather_forecast_14_days_search_location_by_name_or_zip_code",
+    "reason": "Allows searching for location by name or zip code to get forecast data."
+  },
+  {
+    "api_id": "easy_weather_hourly_forecast_240_hours",
+    "reason": "Provides hourly weather forecast for up to 240 hours."
+  },
+  {
+    "api_id": "ambee_water_vapor_data_water_vapour_history_by_lat_lng",
+    "reason": "Returns historical weather data including water vapor by coordinates."
+  },
+  {
+    "api_id": "national_weather_service_stations_stationid_observations_recordid",
+    "reason": "Provides specific historical observation data for a weather station."
+  }
+]

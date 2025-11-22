@@ -1,0 +1,68 @@
+[
+  {
+    "api_id": "meteostat_hourly_station_data",
+    "C": 0.9999278191987139,
+    "D_plus": 4.1382348080098996e-05,
+    "D_minus": 0.5732737837720718
+  },
+  {
+    "api_id": "weather_forecast_14_days_getforecastdata",
+    "C": 0.6370530948393515,
+    "D_plus": 0.27895871882270007,
+    "D_minus": 0.4896350199756142
+  },
+  {
+    "api_id": "rapidweather_coordinates_by_location_name",
+    "C": 0.6369844406510222,
+    "D_plus": 0.279028333272672,
+    "D_minus": 0.48961181475038756
+  },
+  {
+    "api_id": "history_hourlyweatherzip",
+    "C": 0.6316396960396451,
+    "D_plus": 0.28561058922738464,
+    "D_minus": 0.4897460009282249
+  },
+  {
+    "api_id": "weather_forecast_14_days_get_forecastdata_by_lat_lon",
+    "C": 0.6197165641787028,
+    "D_plus": 0.2942156879760562,
+    "D_minus": 0.4794590510791416
+  },
+  {
+    "api_id": "easy_weather_historical_daily",
+    "C": 0.614981508388994,
+    "D_plus": 0.29666973875504576,
+    "D_minus": 0.47386400240037596
+  },
+  {
+    "api_id": "easy_weather_hourly_forecast_240_hours",
+    "C": 0.6080849951134256,
+    "D_plus": 0.29406789416347257,
+    "D_minus": 0.4562679962640448
+  },
+  {
+    "api_id": "ai_weather_by_meteosource_find_places_prefix",
+    "C": 0.6058102631824627,
+    "D_plus": 0.2977564671185411,
+    "D_minus": 0.45760684985276495
+  },
+  {
+    "api_id": "accuweather_get24hoursconditionsbylocationkey",
+    "C": 0.6034608567412999,
+    "D_plus": 0.29877143300062875,
+    "D_minus": 0.4546760842996035
+  },
+  {
+    "api_id": "climate_data_search_location_by_name_or_zip_code",
+    "C": 0.583592831208052,
+    "D_plus": 0.3074856119272436,
+    "D_minus": 0.4309397442434963
+  },
+  {
+    "api_id": "weather_forecast_14_days_search_location_by_name_or_zip_code",
+    "C": 0.09809998847701057,
+    "D_plus": 0.5698657325048695,
+    "D_minus": 0.061984500585346644
+  }
+]
