@@ -10,6 +10,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from src.core.runtime_bootstrap import harden_scientific_runtime
+
+harden_scientific_runtime()
+
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go

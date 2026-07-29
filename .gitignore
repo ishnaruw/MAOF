@@ -51,6 +51,7 @@ test_endpoint.ipynb
 
 # Local scripts and figures
 /thesis_figures/
+/paper/figures/
 
 # outputs
 results/*

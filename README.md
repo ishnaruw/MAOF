@@ -20,6 +20,9 @@ thesis analysis.
 - LLM-based planning over selected APIs.
 - Deterministic candidate-ranking, duplicate, hallucination, anomaly, and
   composition-QoS evaluation outputs.
+- Streamlit dashboard for running experiments, browsing completed runs,
+  inspecting live logs, evaluating ranking similarity, and visualizing planned
+  API compositions.
 - Post-run scripts for composition summaries, ranking agreement metrics,
   weight-sensitivity tables, and research figures.
 
@@ -49,7 +52,8 @@ AutoLLMCompose/
 |   |-- eval/                              # Evaluation and audit helpers
 |   |-- llm/                               # Provider backends and AutoGen gateway
 |   |-- rag/                               # FAISS retrieval wrapper
-|   `-- tools/                             # Catalog loading utilities
+|   |-- tools/                             # Catalog loading utilities
+|   `-- ui/                                # Streamlit dashboard and live-demo helpers
 |-- tests/                                 # Unit tests
 |-- requirements.txt
 `-- README.md
@@ -179,6 +183,69 @@ This checkout uses the committed FAISS index directly. If you intentionally
 change the catalog or embedding setup, rebuild the corresponding index with the
 project's index-generation workflow before committing the catalog and index
 together.
+
+## Running The Streamlit Dashboard
+
+The main app entry point is `src/ui/ranking_eval_app.py`. It includes the live
+demo, ranking evaluation, composition visualization, experiment launcher, and
+completed-run browser in one Streamlit sidebar.
+
+Start from the repository root after installation:
+
+```bash
+source .venv/bin/activate
+python -m streamlit run src/ui/ranking_eval_app.py
+```
+
+Streamlit prints the local URL, usually `http://localhost:8501`. If that port is
+busy, choose another one:
+
+```bash
+python -m streamlit run src/ui/ranking_eval_app.py --server.port 8502
+```
+
+For a headless or remote terminal session:
+
+```bash
+python -m streamlit run src/ui/ranking_eval_app.py \
+  --server.headless true \
+  --server.port 8501
+```
+
+The sidebar pages are:
+
+| Page | Use it for | Expected data |
+| --- | --- | --- |
+| `Live Demo Deep Dive` | Defense/demo walkthrough for one completed parent run, including query context, retrieval, ranking, planner outputs, and raw artifacts. | A model run folder such as `results/logs/<run_tag>/<provider_model>/` containing `qXX_*` query folders. |
+| `Ranking Evaluation` | Ranking-similarity and composition-workflow evaluation across completed query runs. | A parent runs directory containing one or more `qXX_*` folders with evaluation reports. |
+| `Composition Visualizations` | Workflow graph, risk analysis, recommendation, mode comparison, and sequence diagrams for planned compositions. | Composition QoS evaluation rows and planner outputs under completed query run folders. |
+| `Run Experiments` | Launch new query runs from the browser and monitor stage progress, logs, and generated reports. | Provider credentials in `.env`, or a running LM Studio server, plus the committed catalog and FAISS index. |
+| `Completed Runs` | Browse existing or still-running query folders and inspect logs/artifacts. | Any directory under `results/logs/` that contains `qXX_*` query folders. |
+
+You can browse completed artifacts without an LLM key. Starting a new run from
+the `Run Experiments` page uses the same driver as the CLI and writes outputs
+under:
+
+```text
+results/logs/<run_tag>/<provider_model>/<query_id_timestamp>/
+```
+
+Launcher stdout/stderr logs are stored under:
+
+```text
+results/logs/streamlit_launches/
+```
+
+If you refresh or regenerate reports while the app is open, use the page's
+`Reload reports`, `Reload visualization data`, `Reload completed runs`, or
+`Reload live demo artifacts` button. Streamlit caches loaded artifacts for
+speed, so those buttons clear the relevant cache.
+
+The live-demo page can also run standalone when you only need that view:
+
+```bash
+python -m streamlit run src/ui/live_demo_deep_dive.py
+```
 
 ## Running The Pipeline
 
@@ -343,6 +410,7 @@ python -m unittest tests.test_json_parsing tests.test_output_schemas
 python -m unittest tests.test_ranker_parser
 python -m unittest tests.test_composition_qos_eval
 python -m unittest tests.test_fireworks_model_selection tests.test_groq_failover_backend
+python -m unittest tests.test_live_demo_loader tests.test_composition_visualization_recommendation
 ```
 
 For a quick syntax check:
@@ -427,6 +495,34 @@ No services loaded from catalog
 
 Check that `data/processed/api_catalog_sample_balanced/api_repo.enriched.jsonl`
 exists and that the repository data files were pulled correctly.
+
+Streamlit opens but a dashboard page shows no runs
+
+Point the sidebar directory selector at the parent folder that contains query
+run folders named `qXX_*`. For most pages this is a model-level folder such as:
+
+```text
+results/logs/<run_tag>/<provider_model>/
+```
+
+If you just launched a run from the app, use `Completed Runs` or `Run
+Experiments` and check `results/logs/streamlit_launches/` for the launcher log.
+
+Dashboard still shows old values after recalculating reports
+
+Use the relevant reload button in the sidebar, or restart Streamlit:
+
+```bash
+python -m streamlit run src/ui/ranking_eval_app.py
+```
+
+NumPy optional dependency warnings from Anaconda
+
+The app hardens the scientific runtime before importing dashboard plotting
+libraries, which avoids common `numexpr`/`bottleneck` import failures in mixed
+NumPy environments. If the same warnings appear in direct test runs, use the
+project virtual environment created from `requirements.txt`, or reinstall the
+affected optional packages inside the active environment.
 
 ## Notes For Contributors
 

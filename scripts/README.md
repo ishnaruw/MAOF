@@ -379,6 +379,37 @@ Query score panels:
 python scripts/plot_query_score_panels.py "$RUN_DIR" --queries q01,q02,q03,q04,q05
 ```
 
+Publication Figure 3 winner/tie heatmap:
+
+```bash
+python scripts/make_fig3_winner_tie_heatmap.py \
+  --run-dir "$RUN_DIR" \
+  --out-dir paper/figures
+```
+
+Publication Figure 3 composition diagnostics:
+
+```bash
+python scripts/generate_fig3_composition_diagnostics.py \
+  --run-dir "$RUN_DIR" \
+  --out-dir "$RUN_DIR/figures/paper"
+```
+
+Representative workflow case-study figure:
+
+```bash
+python scripts/figures/make_workflow_case_study_figure.py \
+  --run-dir "$RUN_DIR" \
+  --out-dir "$RUN_DIR/figures/paper"
+```
+
+Query-level QoS-adjusted score grouped bar chart:
+
+```bash
+python scripts/generate_query_level_grouped_bar.py \
+  --results-dir "$RUN_DIR"
+```
+
 Query IDs may be written as `q01`, `01`, or `1`.
 
 ## Determinism and Failure Behavior
@@ -426,3 +457,11 @@ warnings were included in the generated conclusions.
 - `plot_query_score_overview.py`: query score bars and winner/tied-winner
   heatmap.
 - `plot_query_score_panels.py`: small-multiple query score panels.
+- `make_fig3_winner_tie_heatmap.py`: publication Figure 3 winner/tie heatmap,
+  score matrix, summary, and debug heatmap.
+- `generate_fig3_composition_diagnostics.py`: publication Figure 3 composition
+  diagnostic panels, audit CSVs, and manifest.
+- `generate_query_level_grouped_bar.py`: query-by-mode grouped bar chart and
+  score matrix CSV.
+- `figures/make_workflow_case_study_figure.py`: representative workflow
+  case-study figure with CSV, metadata, and LaTeX sidecar.
